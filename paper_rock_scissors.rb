@@ -5,29 +5,30 @@ def win_message(choice)
   if choice == 'r'
     puts "Rock smashes Scissors"
   elsif choice == 'p'
-    puts "Scissors cut paper"
-  else puts "Paper wraps rock"
+    puts "Paper wraps rock"
+  else puts "Scissors cut paper"
+  end
 end
-begin      
+
+loop do    
   begin
     puts "Choose either p, r or s to play"
     player_choice = gets.chomp.downcase
-    binding.pry
   end until CHOICES.keys.include?(player_choice)
 
   computer_choice = CHOICES.keys.sample
 
   if player_choice == computer_choice
-    puts "Same choice ... its a tie"
+    puts "Its a tie, you both chose #{CHOICES[player_choice]}"
   elsif
     (player_choice == 'r' && computer_choice == 's') || (player_choice == 'p' && computer_choice == 'r' )||(player_choice == 's' && computer_choice == 'p')
-    puts "You win !!"
+    puts "You win with #{CHOICES[player_choice]} the computer chose #{CHOICES[computer_choice]}"
     win_message(player_choice)
   else
-    puts "Computer wins"
-    win_message (computer_choice)
+    puts "The Computer wins with #{CHOICES[computer_choice]}, you chose #{CHOICES[player_choice]}"
+    win_message(computer_choice)
   end
   puts 'Play again (y/n)?'
-  play_again = gets.chomp.downcase
-end until play_again == "y"
+  break if gets.chomp.downcase == "n"
+end
 
