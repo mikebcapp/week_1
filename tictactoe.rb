@@ -25,8 +25,10 @@ def empty_postions(board)
 end
 
 def player_go(board)
-  puts "Player pick a square 1 .. 9"
-  position = gets.chomp.to_i
+  begin
+    puts "Player pick a square 1 .. 9"
+    position = gets.chomp.to_i
+  end until empty_postions(board).include? position
   board[position]= "X"
 end
 
