@@ -58,7 +58,7 @@ begin
   else hit_stay =="2"
     puts"Your total is #{player_total}"
   end
-end while hit_stay == "1" || player_total > 21
+end while hit_stay == "1" || player_bust
 puts player_bust  ?  "You Bust, Dealer wins" : "You Stayed"
   
 #Dealer turn
