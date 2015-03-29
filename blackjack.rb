@@ -1,7 +1,7 @@
 def calculate_total (cards)
-  values = cards.collect{|card| card[1]}
+  values = cards.collect { |card| card[1] }
   total = 0   
-  values.each do |value|
+  values.each do | value |
     if value == "Ace"
       total += 11
     elsif
@@ -11,8 +11,7 @@ def calculate_total (cards)
       total += value.to_i
     end
   end
-  aces = 0
-  aces = cards.select{|card| card[1] == "Ace"}.count
+  aces = cards.select { |card | card[1] == "Ace" }.count
   while aces > 0
     total -= 10 if total > 21
     aces -= 1
@@ -33,10 +32,10 @@ dealer_hand = []
 player_total = 0
 dealer_total = 0
 
+2.times do
 player_hand << deck.pop
 dealer_hand << deck.pop
-player_hand << deck.pop
-dealer_hand << deck.pop
+end
 
 player_total = calculate_total(player_hand)
 dealer_total = calculate_total(dealer_hand)
@@ -58,7 +57,7 @@ begin
   else hit_stay =="2"
     puts"Your total is #{player_total}"
   end
-end while hit_stay == "1" || player_bust
+end while hit_stay == "1" 
 puts player_bust  ?  "You Bust, Dealer wins" : "You Stayed"
   
 #Dealer turn
@@ -78,8 +77,9 @@ unless player_bust || dealer_bust
     if player_total > dealer_total
       puts "Player wins with a score of #{player_total} compared to #{dealer_total}"
     elsif dealer_total > player_total
-       puts "Player wins with a score of #{player_total} compared to #{dealer_total}"
-    else puts "Its a tie with a score of #{player_total}"
+       puts "Dealer wins with a score of #{dealer_total} compared to #{player_total}"
+    else 
+      puts "Its a tie with a score of #{player_total}"
     end
   end
 end
